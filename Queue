@@ -2,6 +2,7 @@ public class Queue {
 	private int capacity;
 	private int front = 0;
 	private int rear = 0;
+	private int numInQueue = 0;
 	Object[] array;
 	
 	public Queue() {
@@ -42,6 +43,7 @@ public class Queue {
 			 if(front > capacity) {
 				 front = 0;
 			 }
+			 numInQueue ++;
 			 return true;
 		 }
 		 else {
@@ -57,6 +59,7 @@ public class Queue {
 			 if(rear<0) {
 				 rear = capacity;
 			 }
+			 numInQueue --;
 			 return n;
 		 }
 		 else {
