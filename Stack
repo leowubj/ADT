@@ -1,0 +1,76 @@
+package stack;
+import java.util.Arrays;
+
+public class Stack {
+	
+	 private int capacity;
+	 private static int top = -1;
+	 Object[] array;
+
+	 public Stack() {
+	     this.capacity = 100;
+	     array = new Object[capacity];
+	 }
+	 
+	 public Stack(int n) {
+		 this.capacity = n;
+		 array = new Object[n];
+	 }
+
+	    
+	 public int getSize(){
+	     if(isEmpty()){
+	         return 0;
+	     }else{
+	         return top + 1;
+	     }
+	 }
+
+	 public boolean isEmpty(){
+	     return (top < 0);
+	 }
+	 
+	 public boolean isFull() {
+		 return (top == capacity);
+	 }
+	 
+	 public Object top() {
+		 if(isEmpty()){
+			 return null;
+		 }
+		 return array[top];
+	 }
+	 
+	 public void push(Object element) {
+		 if(!isFull()) {
+			 array[++top] = element;
+		 }
+		 else {
+			 Object[] array1;
+			 array1 = new Object[top*2];
+			 for(int i =0; i<=top;i++) {
+				 array1[i] = array[i];
+			 }
+			 array = array1;
+		 }
+	 }
+	 
+	 public Object pop() {
+		 if(isEmpty()) {
+			 return null;
+		 }
+		 else {
+			 return array[top--];
+		 }
+	 }
+	 
+	 public String getAllElements(){
+	        String[] arr = new String[top + 1];
+	        if(!isEmpty()){
+	            for(int i = 0;i < getSize();i ++){
+	                arr[i] = (String)array[i];
+	            }
+	        }
+	        return Arrays.toString(arr);
+	    }
+}
